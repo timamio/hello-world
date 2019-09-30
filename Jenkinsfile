@@ -8,11 +8,10 @@ pipeline {
     stage('Attrib Checkout') {
           steps {
             sh "ifconfig"
-            sh "git clone https://github.com/timamio/hello-world.git"
-            dir('hello-world') {
-              sh "docker build -t hello-node."
-              sh "kubectl apply -f Deployment.yaml"              
-              sh "kubectl apply -f Service.yaml"
+            sh "cd hello-world && git clone https://github.com/timamio/hello-world.git"
+            sh "cd hello-world && docker build -t hello-node ."
+            sh "cd hello-world && kubectl apply -f Deployment.yaml"              
+            sh "cd hello world && kubectl apply -f Service.yaml"
           }
     }
   }
